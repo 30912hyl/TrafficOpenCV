@@ -1,11 +1,11 @@
 import cv2 as cv
 
-#img = cv.imread('Photos/hermes-birkin.jpg') #read image into matrix
+img = cv.imread('Faces\Babe\IMG_0011.HEIC') #read image into matrix
 
-#cv.imshow('Bag', img)                  #show image(window name, matrix)
+cv.imshow('Bag', img)                  #show image(window name, matrix)
 
-#cv.waitKey(0)                          #wait n until key pressed(0=inf)
-
+cv.waitKey(0)                          #wait n until key pressed(0=inf)
+'''
 #Reading Videos
 capture = cv.VideoCapture(1)  #arg: int or path to video file
                                         #0 for webcam, 1 for 2nd connected cam, etc.
@@ -18,4 +18,5 @@ while True:
 
 capture.release()
 cv.destroyAllWindows()
+'''
 
