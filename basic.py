@@ -1,6 +1,6 @@
 import cv2 as cv
 from rescale import *
-
+#git init   git add main.py   git commit -m ""     git push origin main
 img = cv.imread('Photos/london.jpg') 
 scaled = rescaleFrame(img, 0.75)
 cv.imshow('London', scaled)
