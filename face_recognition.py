@@ -15,7 +15,8 @@ for i in os.listdir(r'C:\\Users\\aaron\\OneDrive\\Documents\\OpenCV\\Faces'):
 face_recognizer = cv.face.LBPHFaceRecognizer_create()
 face_recognizer.read('face_trained.yml')
 
-capture = cv.VideoCapture(0)                                   
+capture = cv.VideoCapture(0)
+count = 0                                   
 while True:
     isTrue, frame = capture.read()      
     
@@ -25,10 +26,13 @@ while True:
     faces_rect = haar_cascade.detectMultiScale(gray,1.1,4)
 
     for (x,y,w,h) in faces_rect:
+        count+=1
         faces_roi = gray[y:y+h, x:x+w]
         label, confidence = face_recognizer.predict(faces_roi)
-        print(f'Label = {people[label]} with a confidence of {confidence}')
-
+        if(count==10):
+            print(f'Label = {people[label]} with a confidence of {confidence}')
+            count=0
+        
         cv.putText(frame,str(people[label]),(20,20),cv.FONT_HERSHEY_COMPLEX,1.0,(0,255,0),thickness=2)
         cv.rectangle(frame, (x,y), (x+w,y+h), (0,255,0), thickness=2)
 
@@ -39,7 +43,7 @@ while True:
 capture.release()
 cv.destroyAllWindows()
 '''
-img = cv.imread(r'C:\\Users\\aaron\\OneDrive\\Documents\\OpenCV\\train\\IMG_0323.jpg')
+img = cv.imread(r'C:\\Users\\aaron\\OneDrive\\Documents\\OpenCV\\train\\IMG_0335.jpg')
 img = rescaleFrame(img, 0.1)
 
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
